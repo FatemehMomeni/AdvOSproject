@@ -1,0 +1,20 @@
+import socket
+
+end = -1
+
+if __name__ == '__main__':
+    host = '127.0.0.1'
+    port = 51832
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((host, port))
+    n = input('Enter the number of Fibonacci sequence:')
+    while True:
+        s.send(n.encode('utf-8'))
+        data = s.recv(1024)
+        print('Received from the server :', str(data.decode('utf-8')))
+        ans = input('\nDo you want to continue(y/n) :')
+        if ans == 'y':
+            continue
+        else:
+            break
+    s.close()
