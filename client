@@ -7,8 +7,8 @@ if __name__ == '__main__':
     port = 51832
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((host, port))
-    n = input('Enter the number of Fibonacci sequence:')
     while True:
+        n = input('Enter the number of Fibonacci sequence:')
         s.send(n.encode('utf-8'))
         data = s.recv(1024)
         print('Received from the server :', str(data.decode('utf-8')))
